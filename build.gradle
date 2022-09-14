@@ -23,6 +23,16 @@ dependencies {
 	//compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20
 }
 
+
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+jar {
+manifest {
+attributes(
+'Main-Class': 'com.user.UserRegistrationModule1Application'
+)
+}
+from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
